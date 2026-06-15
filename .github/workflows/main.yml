@@ -1,16 +1,13 @@
 name: Build KOBANI APK
-on:
-  push:
-  workflow_dispatch:
-jobs:
+on: [push, workflow_dispatch]
+jo
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Extract Project
-        run: |
-          unzip -o flutter2.zip
+        run: unzip -o flutter2.zip
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
