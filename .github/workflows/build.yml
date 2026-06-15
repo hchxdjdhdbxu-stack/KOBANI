@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: unzip -o flutter2.zip
+      - run: unzip -o flutter2.zip -d .
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
@@ -15,8 +15,8 @@ jobs:
         with:
           flutter-version: '3.19.0'
       - run: flutter pub get
-      - run: flutter build apk --release --build-name=1.0 --build-number=1
+      - run: cd $(find . -maxdepth 2 -name "pubspec.yaml" -exec dirname {} \;) && flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
           name: KOBANI_App
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: "**/app-release.apk"
