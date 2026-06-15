@@ -1,6 +1,6 @@
 name: Build KOBANI APK
 on: [push, workflow_dispatch]
-jo
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
